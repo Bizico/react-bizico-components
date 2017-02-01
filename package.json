@@ -1,0 +1,10 @@
+{
+  "name": "react-bizico-components",
+  "version": "1.0.0",
+  "private": true,
+  "description": "React components build by Bizico team.",
+  "main": "index.js",
+  "repository": "https://github.com/Bizico/react-bizico-components.git",
+  "author": "Maksym Ridush <mridush@bizico.com>",
+  "license": "MIT"
+}
