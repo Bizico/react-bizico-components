@@ -1,3 +1,7 @@
 .idea/
+.env
+es/
+umd/
 
 node_modules/
+coverage/

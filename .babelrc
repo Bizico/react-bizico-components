@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "env",
+    "es2016",
+    "react"
+  ],
+  "plugins": [
+    "transform-react-jsx",
+    "react-hot-loader/babel",
+    "transform-object-rest-spread"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+}
