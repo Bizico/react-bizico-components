@@ -1,0 +1,10 @@
+exports[`DataTable should create component 1`] = `
+<div>
+  <table
+    className="table" />
+  <div
+    className="red">
+    test
+  </div>
+</div>
+`;

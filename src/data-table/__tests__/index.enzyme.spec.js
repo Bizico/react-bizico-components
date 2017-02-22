@@ -10,7 +10,7 @@ function setup() {
 	}
 }
 
-describe('About', () => {
+describe('DataTable', () => {
 
 	it("with enzyme", function() {
 		const { enzymeWrapper } = setup();
