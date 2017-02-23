@@ -23,6 +23,17 @@ export default class Home extends React.Component {
               </Link>
             </Panel>
           </Col>
+          <Col md={4}>
+            <Panel header={'Soon™'} bsStyle="primary">
+              <p>
+                Soon™.
+              </p>
+
+              <Link to="/components/soon">
+                <Button className="pull-right">View Demo</Button>
+              </Link>
+            </Panel>
+          </Col>
         </Row>
 
       </div>

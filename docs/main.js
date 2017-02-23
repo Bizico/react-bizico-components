@@ -17526,6 +17526,28 @@ var Home = function (_React$Component) {
                 )
               )
             )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Col,
+            { md: 4 },
+            _react2.default.createElement(
+              _reactBootstrap.Panel,
+              { header: 'Soon™', bsStyle: 'primary' },
+              _react2.default.createElement(
+                'p',
+                null,
+                'Soon\u2122.'
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/components/soon' },
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  { className: 'pull-right' },
+                  'View Demo'
+                )
+              )
+            )
           )
         )
       );
