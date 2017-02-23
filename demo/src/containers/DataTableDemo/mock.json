@@ -1,0 +1,12 @@
+{
+  "simpleData": [
+    {
+      "name": "John Doe",
+      "status": "employed"
+    },
+    {
+      "name": "Vasya Pupkin",
+      "status": "unemployed"
+    }
+  ]
+}
