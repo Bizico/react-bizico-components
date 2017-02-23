@@ -48,17 +48,18 @@ let config = {
   },
 
   devtool: 'inline-source-map',
-
   context: path.resolve(demoDir, 'src'),
   devServer: {
-    hot: true,
-    // enable HMR on the server
-
     contentBase: path.resolve(demoDir, 'dist/'),
-    // match the output path
-
-    publicPath: '/'
-    // match the output `publicPath`
+    historyApiFallback: true,
+    hot: true,
+    publicPath: '/',
+    inline: true,
+    watchOptions: {
+      ignored: /node_modules/,
+      aggregateTimeout: 300,
+      poll: 300
+    }
   },
 
   plugins: [
