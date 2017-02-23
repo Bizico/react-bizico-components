@@ -1,13 +1,11 @@
-require('dotenv').config();
-
-var path = require('path');
-var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+let path = require('path');
+let webpack = require('webpack');
+let webpackMerge = require('webpack-merge');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
-var pagesConfig = require('./pages.config');
+let pagesConfig = require('./pages.config');
 
 let srcDir = path.resolve(__dirname, '../../src');
 
