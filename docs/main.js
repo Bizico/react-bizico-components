@@ -17647,7 +17647,7 @@ var Demo = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
-        null,
+        { basename: '/react-bizico-components' },
         _react2.default.createElement(
           'div',
           null,

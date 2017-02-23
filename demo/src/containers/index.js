@@ -29,7 +29,7 @@ const routes = [
 export default class Demo extends React.Component {
   render() {
     return (
-      <Router>
+      <Router basename="/react-bizico-components">
         <div>
           <Navbar inverse>
             <Navbar.Header>
