@@ -7,9 +7,7 @@ class DataTable extends React.Component {
   render() {
     return (
       <div>
-        <Table>
-
-        </Table>
+        <Table/>
         <div className="red">test</div>
       </div>
     )
