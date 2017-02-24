@@ -251,7 +251,6 @@ class DataTable extends React.Component {
     }
 
     return (
-      <div>
         <Table responsive bordered={true} {...tableProps}>
           <thead>
           <tr>
@@ -262,8 +261,6 @@ class DataTable extends React.Component {
           {rows}
           </tbody>
         </Table>
-        {this.props.children}
-      </div>
     );
   }
 }

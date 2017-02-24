@@ -14,10 +14,10 @@ function setup() {
 
 describe('DataTable', () => {
 
-	it("with enzyme", function() {
+	it("has table", function() {
 		const { enzymeWrapper } = setup();
 
-		expect(enzymeWrapper.contains(<Table/>)).toBe(true);
+		expect(enzymeWrapper.find(Table).length).toBe(1);
 
 	});
 
