@@ -1,8 +1,11 @@
 import React from 'react';
 
-import {DataTable} from '../../../../src'
+import {PageHeader, Panel, Accordion} from 'react-bootstrap';
+import Highlight from 'react-highlight';
 
-import {simpleData} from './mock.json';
+import {DataTable} from '../../../../../src'
+
+import {simpleData} from './mock';
 
 export default class DataTableDemo extends React.Component {
   constructor(props) {
@@ -43,13 +46,15 @@ export default class DataTableDemo extends React.Component {
   }
 
   render() {
-    return <div>
+    return (
       <div >
-        <h1>Data-Table Demo</h1>
-        <h4>Basic example</h4>
-        <DataTable data={simpleData} config={this.state.simpleConfig}/>
-        <h5>Config</h5>
-        <pre>
+        <PageHeader>DataTable Demo</PageHeader>
+
+        <Panel header="Basic example">
+          <DataTable fill data={simpleData} config={this.state.simpleConfig}/>
+        </Panel>
+        <Panel header="Config" collapsible={true}>
+          <Highlight fill className="javascript">
 {`simpleConfig: {
   columns: [
     {
@@ -61,13 +66,14 @@ export default class DataTableDemo extends React.Component {
       dataKey: 'status'
     }
   ]
- }`}
-        </pre>
-
+}`}
+          </Highlight>
+        </Panel>
 
         <h4>Expand row</h4>
         <DataTable data={simpleData} config={this.state.expandConfig}/>
         <h5>Config</h5>
+
         <pre>
 {`expandConfig: {
   columns: [
@@ -91,6 +97,6 @@ export default class DataTableDemo extends React.Component {
 
         <h6>Better examples and docs coming soon™</h6>
       </div>
-    </div>
+    )
   }
 }

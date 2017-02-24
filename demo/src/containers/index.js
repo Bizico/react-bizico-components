@@ -1,14 +1,16 @@
 import React from 'react';
 
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Switch} from 'react-router-dom';
 import {Navbar} from 'react-bootstrap';
 
-import DataTableDemo from './DataTableDemo';
+import Components from './Components';
+import DataTableDemo from './Components/DataTableDemo';
 import Home from './Home';
-import {RouteWithSubRoutes} from '../components';
+import {RouteWithSubRoutes, NavBarLink} from '../components';
+
 
 const NotFound = () => {
-  return (<h3>Not Found</h3>)
+  return (<h3>Not found, or in progress ^_^</h3>)
 };
 
 const routes = [
@@ -18,8 +20,14 @@ const routes = [
     exact: true
   },
   {
-    path: '/components/data-table',
-    component: DataTableDemo
+    path: '/components',
+    component: Components,
+    routes: [
+      {
+        path: '/components/data-table',
+        component: DataTableDemo
+      }
+    ]
   },
   {
     component: NotFound
@@ -31,12 +39,19 @@ export default class Demo extends React.Component {
     return (
       <Router basename="/react-bizico-components">
         <div>
-          <Navbar inverse>
+          <Navbar className="demo-nav">
             <Navbar.Header>
               <Navbar.Brand>
-                <Link to='/'>React-Bizico-Components</Link>
+                <Link to='/' >React-Bizico-Components</Link>
               </Navbar.Brand>
+              <Navbar.Toggle />
             </Navbar.Header>
+            <Navbar.Collapse>
+              <ul className="nav navbar-nav">
+                <NavBarLink to="/guide" >Guide</NavBarLink>
+                <NavBarLink to="/components" >Components</NavBarLink>
+              </ul>
+            </Navbar.Collapse>
           </Navbar>
           <div className="container">
             <Switch>
