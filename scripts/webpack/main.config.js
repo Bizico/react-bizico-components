@@ -54,7 +54,6 @@ let baseConfig = {
   plugins: [
     new ExtractTextPlugin({filename: '[name].css', disable: false, allChunks: true}),
     new webpack.optimize.CommonsChunkPlugin({
-      // name: 'vendor',
       names: ['vendor', 'manifest'],
       minChunks: function (module) {
         // this assumes your vendor imports exist in the node_modules directory
@@ -70,7 +69,6 @@ let baseConfig = {
   ]
 
 };
-
 
 let es = {
   output: {
@@ -88,7 +86,6 @@ let umd = {
 let targets = [es, umd].map((target) => {
   return webpackMerge(baseConfig, target)
 });
-
 
 targets.unshift(pagesConfig);
 

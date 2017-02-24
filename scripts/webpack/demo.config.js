@@ -1,21 +1,22 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let demoDir = path.resolve(__dirname, '../../demo');
-let srcDir = path.resolve(__dirname, '../../src');
+const demoDir = path.resolve(__dirname, '../../demo');
+const demoSrc = path.resolve(demoDir, 'src');
+const demoDist = path.resolve(demoDir, 'dist');
+const srcDir = path.resolve(__dirname, '../../src');
 
-let config = {
+module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    path.resolve(demoDir, 'src/index.js'),
+    './index.js',
   ],
   output: {
-    path: path.resolve(demoDir, 'dist/'),
     filename: '[hash].[name].js',
-    // filename: 'bundle.js',
+    path: demoDist,
     publicPath: '/'
   },
   module: {
@@ -33,24 +34,29 @@ let config = {
         test: /\.scss/,
         include: [
           srcDir,
-          path.resolve(demoDir, 'src')
+          demoSrc
         ],
         loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.css$/,
         include: [
-          srcDir
+          srcDir,
+          /node_modules/
         ],
-        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },
 
   devtool: 'inline-source-map',
-  context: path.resolve(demoDir, 'src'),
+  context: demoSrc,
   devServer: {
-    contentBase: path.resolve(demoDir, 'dist/'),
+    contentBase: demoDist,
     historyApiFallback: true,
     hot: true,
     publicPath: '/',
@@ -63,16 +69,9 @@ let config = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({inject: 'body', template: path.resolve(demoDir, 'src/index.html')}),
-
     new webpack.HotModuleReplacementPlugin(),
-    // enable HMR globally
-
     new webpack.NamedModulesPlugin(),
-    // prints more readable module names in the browser console on HMR updates
 
+    new HtmlWebpackPlugin({inject: 'body', template: path.resolve(demoDir, 'src/index.html')}),
   ],
 };
-
-
-module.exports = config;

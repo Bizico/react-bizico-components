@@ -3,12 +3,15 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
-let demoDir = path.resolve(__dirname, '../../demo');
-let srcDir = path.resolve(__dirname, '../../src');
+const demoDir = path.resolve(__dirname, '../../demo');
+const demoSrc = path.resolve(demoDir, 'src');
+const demoDist = path.resolve(demoDir, 'dist');
+const srcDir = path.resolve(__dirname, '../../src');
 
 let config = {
+  context: demoSrc,
   entry: [
-    path.resolve(demoDir, 'src/index.js'),
+    './index.js',
   ],
   output: {
     path:  path.resolve(__dirname, '../../docs'),
@@ -21,7 +24,7 @@ let config = {
         test: /\.js$/,
         include: [
           srcDir,
-          path.resolve(demoDir, 'src')
+          demoSrc
         ],
         exclude: /node_modules/,
         loader: 'babel-loader',
@@ -30,16 +33,17 @@ let config = {
         test: /\.scss/,
         include: [
           srcDir,
-          path.resolve(demoDir, 'src')
+          demoSrc
         ],
         loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.css$/,
         include: [
-          srcDir
+          srcDir,
+          /node_modules/
         ],
-        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+        loaders: ['style-loader', 'css-loader']
       }
     ]
   },
