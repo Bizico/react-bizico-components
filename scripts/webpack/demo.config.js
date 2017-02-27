@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const demoDir = path.resolve(__dirname, '../../demo');
 const demoSrc = path.resolve(demoDir, 'src');
@@ -31,20 +32,51 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.scss/,
+        test: /\.scss|css$/,
         include: [
-          srcDir,
-          demoSrc
+          srcDir
         ],
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        exclude: [
+          demoDir
+        ],
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                sourceMap: true,
+                importLoaders: 1,
+                localIdentName: '[local]'
+              }
+            }, 'sass-loader'
+          ],
+          fallback: 'style-loader'
+        })
       },
       {
-        test: /\.css$/,
+        test: /\.scss|css$/,
         include: [
-          srcDir,
+          demoDir,
           /node_modules/
         ],
-        loaders: ['style-loader', 'css-loader']
+        exclude: [
+          srcDir
+        ],
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                sourceMap: true,
+                importLoaders: 1,
+                localIdentName: '[local]'
+              }
+            }, 'sass-loader'
+          ],
+          fallback: 'style-loader'
+        })
       },
       {
         test: /\.json$/,
@@ -72,6 +104,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
 
+    new ExtractTextPlugin({allChunks: false, filename: 'styles.css'}),
     new HtmlWebpackPlugin({inject: 'body', template: path.resolve(demoDir, 'src/index.html')}),
   ],
 };

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {Table} from 'react-bootstrap';
 
-import  './style.scss';
+import styles from './styles.scss';
 
 /**
  * This callback accepts data from table row and returns formatted value.
@@ -125,10 +125,13 @@ class DataTable extends React.Component {
   }
 
   render() {
-    let {
+    let {config: {
       columns: columnsConfiguration = [],
       expand = {},
-      tableProps = {},
+      tableProps = {
+        responsive: true,
+        bordered: true
+      },
       ordering = [],
       orderCallback = () => {
         return {}
@@ -136,8 +139,10 @@ class DataTable extends React.Component {
       rowCallback = () => {
         return {}
       }
-    } = this.props.config;
-    let data = this.props.data;
+    },
+      data,
+      className
+    } = this.props;
 
     /*
      We will populate rows and columns.
@@ -250,17 +255,19 @@ class DataTable extends React.Component {
       })
     }
 
+    const tableClassName = className ? className : tableProps.className ? tableProps.className : styles['b-data-table'];
+
     return (
-        <Table responsive bordered={true} {...tableProps}>
-          <thead>
-          <tr>
-            {columns}
-          </tr>
-          </thead>
-          <tbody>
-          {rows}
-          </tbody>
-        </Table>
+      <Table {...tableProps} className={tableClassName}>
+        <thead>
+        <tr>
+          {columns}
+        </tr>
+        </thead>
+        <tbody>
+        {rows}
+        </tbody>
+      </Table>
     );
   }
 }

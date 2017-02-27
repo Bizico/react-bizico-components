@@ -3,7 +3,7 @@ import React from 'react';
 import {PageHeader, Panel, Accordion} from 'react-bootstrap';
 import Highlight from 'react-highlight';
 
-import {DataTable} from '../../../../../src'
+import {DataTable} from '../../../../../src';
 
 import {simpleData} from './mock';
 
@@ -94,7 +94,7 @@ export default class DataTableDemo extends React.Component {
   }
 }`}
         </pre>
-
+        <DataTable data={simpleData} config={this.state.expandConfig} className="custom-class" />
         <h6>Better examples and docs coming soon™</h6>
       </div>
     )
