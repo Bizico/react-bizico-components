@@ -29,25 +29,28 @@ let baseConfig = {
         loader: 'babel-loader',
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|css)$/,
         include: [
           srcDir
         ],
         use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: ['css-loader', 'postcss-loader']
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                sourceMap: true,
+                importLoaders: 1,
+                localIdentName: '[local]'
+              }
+            }, 'sass-loader'
+          ],
+          fallback: 'style-loader'
         })
-
       },
       {
-        test: /\.scss/,
-        include: [
-          srcDir
-        ],
-        use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader!sass-loader'
-        })
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   },

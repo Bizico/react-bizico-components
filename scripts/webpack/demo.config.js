@@ -32,36 +32,11 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.scss|css$/,
+        test: /\.(scss|css)$/,
         include: [
-          srcDir
-        ],
-        exclude: [
-          demoDir
-        ],
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                sourceMap: true,
-                importLoaders: 1,
-                localIdentName: '[local]'
-              }
-            }, 'sass-loader'
-          ],
-          fallback: 'style-loader'
-        })
-      },
-      {
-        test: /\.scss|css$/,
-        include: [
+          srcDir,
           demoDir,
           /node_modules/
-        ],
-        exclude: [
-          srcDir
         ],
         use: ExtractTextPlugin.extract({
           use: [
@@ -81,6 +56,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   },
