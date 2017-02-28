@@ -14,9 +14,9 @@
   "license": "MIT",
   "scripts": {
     "setup": "yarn || npm install",
-    "start": "webpack-dev-server --config ./scripts/webpack/demo.config.js",
-    "build": "webpack --config ./scripts/webpack/main.config.js && git add ./docs",
-    "pages": "gh-pages -d docs",
+    "start": "webpack-dev-server --env=pages.dev --progress --profile --colors",
+    "build": "webpack --env=prod --progress --profile --colors",
+    "pages": "webpack --env=pages.prod --progress --profile --colors && git add ./docs && gh-pages -d docs",
     "lint": "esw src; exit 0",
     "test": "jest -u --no-cache --coverage",
     "test:watch": "set NODE_ENV=test&& jest -u --watch --no-cache"
@@ -73,6 +73,7 @@
     "react-test-renderer": "^15.4.2",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony",
     "url-loader": "^0.5.8",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^2.1.0-beta.0",

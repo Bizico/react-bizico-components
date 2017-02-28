@@ -21,5 +21,6 @@
         "transform-es2015-modules-commonjs"
       ]
     }
-  }
+  },
+  "comments": false
 }
