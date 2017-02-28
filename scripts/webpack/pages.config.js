@@ -17,7 +17,7 @@ let config = {
   output: {
     path:  path.resolve(__dirname, '../../docs'),
     filename: '[hash].[name].js',
-    publicPath: ''
+    publicPath: '/react-bizico-components'
   },
   module: {
     rules: [
@@ -60,10 +60,11 @@ let config = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(['docs/*'], {
+    new CleanWebpackPlugin(['docs'], {
       root: path.resolve(__dirname, '../../'),
       verbose: true,
-      dry: false
+      dry: false,
+      exclude: ['404.html']
     }),
     new ExtractTextPlugin({allChunks: false, filename: 'styles.css'}),
 
