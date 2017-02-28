@@ -5,7 +5,8 @@ import Highlight from 'react-highlight';
 
 import {DataTable} from '../../../../../src';
 
-import {simpleData} from './mock';
+import {simpleData, orderingData} from './mock';
+
 
 export default class DataTableDemo extends React.Component {
   constructor(props) {
@@ -36,10 +37,35 @@ export default class DataTableDemo extends React.Component {
           }
         ],
         expand: {
-          component: (props) => {
-            return <div>{props.value}</div>;
+          component: ({value, row}) => {
+            return <div>{value} is {row['status']}</div>;
           },
           dataKey: 'name'
+        }
+      }, orderingConfig: {
+        columns: [
+          {
+            title: 'Name',
+            dataKey: 'name',
+            sortable: true
+          },
+          {
+            title: 'Status',
+            dataKey: 'status',
+            sortable: true
+          },
+          {
+            title: 'Account Balance',
+            dataKey: 'accountBalance',
+            sortable: true
+          }
+        ], orderCallback(ordering, column) {
+          orderingData.sort((a, b) => {
+            let aVal = a[column],
+              bVal = b[column],
+              order = ordering[column] || 1;
+            return aVal > bVal ? order : aVal === bVal ? 0 : -order;
+          });
         }
       }
     }
@@ -51,11 +77,10 @@ export default class DataTableDemo extends React.Component {
         <PageHeader>DataTable Demo</PageHeader>
 
         <Panel header="Basic example">
-          <DataTable fill data={simpleData} config={this.state.simpleConfig}/>
-        </Panel>
-        <Panel header="Config" collapsible={true}>
+          <DataTable data={simpleData} config={this.state.simpleConfig}/>
+
           <Highlight fill className="javascript">
-{`simpleConfig: {
+            {`simpleConfig: {
   columns: [
     {
       title: 'Name',
@@ -70,11 +95,11 @@ export default class DataTableDemo extends React.Component {
           </Highlight>
         </Panel>
 
-        <h4>Expand row</h4>
-        <DataTable data={simpleData} config={this.state.expandConfig}/>
-        <h5>Config</h5>
+        <Panel header="Expand row">
+          <DataTable data={simpleData} config={this.state.expandConfig}/>
 
-        <pre>
+
+          <Highlight fill className="javascript">
 {`expandConfig: {
   columns: [
     {
@@ -87,14 +112,49 @@ export default class DataTableDemo extends React.Component {
     }
   ],
   expand: {
-    component: (props) => {
-      return <div>{props.value}</div>;
+    component: ({value, row}) => {
+      return <div>{value} is {row['status']}</div>;
     },
     dataKey: 'name'
   }
 }`}
-        </pre>
-        <DataTable data={simpleData} config={this.state.expandConfig} className="custom-class" />
+          </Highlight>
+        </Panel>
+
+        <Panel header="Ordering">
+          <DataTable data={orderingData} config={this.state.orderingConfig}/>
+
+          <Highlight fill className="javascript">
+{`orderingConfig: {
+  columns: [
+    {
+      title: 'Name',
+      dataKey: 'name',
+      sortable: true
+    },
+    {
+      title: 'Status',
+      dataKey: 'status',
+      sortable: true
+    },
+    {
+      title: 'Account Balance',
+      dataKey: 'accountBalance',
+      sortable: true
+    }
+  ], orderCallback(ordering, column) {
+    orderingData.sort((a, b) => {
+      let aVal = a[column],
+          bVal = b[column],
+          order = ordering[column] || 1;
+      return aVal > bVal ? order : aVal === bVal ? 0 : -order;
+    });
+  }
+}`}
+          </Highlight>
+        </Panel>
+
+
         <h6>Better examples and docs coming soon™</h6>
       </div>
     )

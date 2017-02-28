@@ -225,7 +225,7 @@ class DataTable extends React.Component {
               let expandProps = {};
               if (expandKey && columnIndex === 0) {
                 expandProps.onClick = expandClick;
-                expandProps.className = this.state.expandList[index] ? 'expandable-shown' : 'expandable-hidden';
+                expandProps.className = `expand-icon ${this.state.expandList[index] ? 'shown' : ''}`;
               }
 
               let ColumnComponent = column.component;
@@ -245,8 +245,8 @@ class DataTable extends React.Component {
         // Append expanded row if needed.
         if (expandKey && this.state.expandList[index]) {
           rows.push(
-            <tr key={index + 'expand'}>
-              <td colSpan={columns.length} style={{padding: '0'}}>
+            <tr key={index + 'expand'} className="expanded">
+              <td colSpan={columns.length}>
                 <ExpandComponent row={row} value={row[expandKey]}/>
               </td>
             </tr>

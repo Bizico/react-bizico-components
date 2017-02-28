@@ -1,7 +1,8 @@
 import React from 'react';
 import {Row, Col} from 'react-bootstrap';
 
-import {RouteWithSubRoutes} from '../../components'
+import {RouteWithSubRoutes, NavBarLink} from '../../components'
+
 
 export default class Components extends React.Component {
   render() {
@@ -10,7 +11,11 @@ export default class Components extends React.Component {
     return (
       <Row>
           <Col md={3}>
-
+            <ul className="nav nav-stacked nav-pills">
+              {routes.map((route, index)=> {
+                return <NavBarLink key={index} to={route.path} >{route.title}</NavBarLink>
+              })}
+            </ul>
           </Col>
           <Col md={9}>
             {routes.map((route, index)=> {

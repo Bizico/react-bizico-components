@@ -25,7 +25,8 @@ const routes = [
     routes: [
       {
         path: '/components/data-table',
-        component: DataTableDemo
+        component: DataTableDemo,
+        title: 'DataTable'
       }
     ]
   },
