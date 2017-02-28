@@ -62,34 +62,37 @@ let baseConfig = {
         // this assumes your vendor imports exist in the node_modules directory
         return module.context && module.context.indexOf('node_modules') !== -1;
       }
-    }),
-    new CleanWebpackPlugin(['es', 'umd'], {
-      root: path.resolve(__dirname, '../../'),
-      verbose: true,
-      dry: false,
-      exclude: ['shared.js']
     })
   ]
-
 };
 
 let es = {
   output: {
     path: path.resolve(__dirname, '../../es')
-  }
+  }, plugins: [
+    new CleanWebpackPlugin(['es'], {
+      root: path.resolve(__dirname, '../../'),
+      verbose: true,
+      dry: false
+    })
+  ]
 };
 
 let umd = {
   output: {
     path: path.resolve(__dirname, '../../umd'),
     libraryTarget: 'umd'
-  }
+  }, plugins: [
+    new CleanWebpackPlugin(['umd'], {
+      root: path.resolve(__dirname, '../../'),
+      verbose: true,
+      dry: false
+    })
+  ]
 };
 
 let targets = [es, umd].map((target) => {
   return webpackMerge(baseConfig, target)
 });
-
-targets.unshift(pagesConfig);
 
 module.exports = targets;
