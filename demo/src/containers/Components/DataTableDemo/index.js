@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {PageHeader, Panel, Accordion} from 'react-bootstrap';
+import { PageHeader, Panel } from 'react-bootstrap';
 import Highlight from 'react-highlight';
 
-import {DataTable} from '../../../../../src';
+import { DataTable } from '../../../../../src';
 
-import {simpleData, orderingData} from './mock';
+import { simpleData, orderingData } from './mock.json';
 
 
 export default class DataTableDemo extends React.Component {
@@ -17,58 +17,67 @@ export default class DataTableDemo extends React.Component {
         columns: [
           {
             title: 'Name',
-            dataKey: 'name'
+            dataKey: 'name',
           },
           {
             title: 'Status',
-            dataKey: 'status'
-          }
-        ]
+            dataKey: 'status',
+          },
+        ],
       },
       expandConfig: {
         columns: [
           {
             title: 'Name',
-            dataKey: 'name'
-          },
-          {
-            title: 'Status',
-            dataKey: 'status'
-          }
-        ],
-        expand: {
-          component: ({value, row}) => {
-            return <div>{value} is {row['status']}</div>;
-          },
-          dataKey: 'name'
-        }
-      }, orderingConfig: {
-        columns: [
-          {
-            title: 'Name',
             dataKey: 'name',
-            sortable: true
           },
           {
             title: 'Status',
             dataKey: 'status',
-            sortable: true
+          },
+        ],
+        expand: {
+          component: ({ value, row }) => (
+            <div>{value} is {row.status}</div>
+          ),
+          dataKey: 'name',
+        },
+      },
+      orderingConfig: {
+        columns: [
+          {
+            title: 'Name',
+            dataKey: 'name',
+            sortable: true,
+          },
+          {
+            title: 'Status',
+            dataKey: 'status',
+            sortable: true,
           },
           {
             title: 'Account Balance',
             dataKey: 'accountBalance',
-            sortable: true
-          }
-        ], orderCallback(ordering, column) {
+            sortable: true,
+          },
+        ],
+        orderCallback(ordering, column) {
           orderingData.sort((a, b) => {
-            let aVal = a[column],
-              bVal = b[column],
-              order = ordering[column] || 1;
-            return aVal > bVal ? order : aVal === bVal ? 0 : -order;
+            const aVal = a[column];
+            const bVal = b[column];
+            const order = ordering[column] || 1;
+
+            if (aVal > bVal) {
+              return order;
+            } else if (aVal < bVal) {
+              return -order;
+            }
+
+            return 0;
           });
-        }
-      }
-    }
+        },
+      },
+    };
   }
 
   render() {
@@ -77,7 +86,7 @@ export default class DataTableDemo extends React.Component {
         <PageHeader>DataTable Demo</PageHeader>
 
         <Panel header="Basic example">
-          <DataTable data={simpleData} config={this.state.simpleConfig}/>
+          <DataTable data={simpleData} config={this.state.simpleConfig} />
 
           <Highlight fill className="javascript">
             {`simpleConfig: {
@@ -96,11 +105,11 @@ export default class DataTableDemo extends React.Component {
         </Panel>
 
         <Panel header="Expand row">
-          <DataTable data={simpleData} config={this.state.expandConfig}/>
+          <DataTable data={simpleData} config={this.state.expandConfig} />
 
 
           <Highlight fill className="javascript">
-{`expandConfig: {
+            {`expandConfig: {
   columns: [
     {
       title: 'Name',
@@ -122,34 +131,42 @@ export default class DataTableDemo extends React.Component {
         </Panel>
 
         <Panel header="Ordering">
-          <DataTable data={orderingData} config={this.state.orderingConfig}/>
+          <DataTable data={orderingData} config={this.state.orderingConfig} />
 
           <Highlight fill className="javascript">
-{`orderingConfig: {
+            {`orderingConfig: {
   columns: [
     {
       title: 'Name',
       dataKey: 'name',
-      sortable: true
+      sortable: true,
     },
     {
       title: 'Status',
       dataKey: 'status',
-      sortable: true
+      sortable: true,
     },
     {
       title: 'Account Balance',
       dataKey: 'accountBalance',
-      sortable: true
-    }
-  ], orderCallback(ordering, column) {
+      sortable: true,
+    },
+  ],
+  orderCallback(ordering, column) {
     orderingData.sort((a, b) => {
-      let aVal = a[column],
-          bVal = b[column],
-          order = ordering[column] || 1;
-      return aVal > bVal ? order : aVal === bVal ? 0 : -order;
+      const aVal = a[column];
+      const bVal = b[column];
+      const order = ordering[column] || 1;
+
+      if (aVal > bVal) {
+        return order;
+      } else if (aVal < bVal) {
+        return -order;
+      }
+
+      return 0;
     });
-  }
+  },
 }`}
           </Highlight>
         </Panel>
@@ -157,6 +174,6 @@ export default class DataTableDemo extends React.Component {
 
         <h6>Better examples and docs coming soon™</h6>
       </div>
-    )
+    );
   }
 }

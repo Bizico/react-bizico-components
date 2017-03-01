@@ -1,2 +1,2 @@
-export * from './route-with-sub-routes';
-export * from './nav-bar-link';
+export { default as RouteWithSubRoutes } from './route-with-sub-routes';
+export { default as NavBarLink } from './nav-bar-link';

@@ -1,28 +1,28 @@
-import React from 'react';
-import {Row, Col} from 'react-bootstrap';
+import React, { PropTypes } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
-import {RouteWithSubRoutes, NavBarLink} from '../../components'
+import { RouteWithSubRoutes, NavBarLink } from '../../components';
+
+const Components = ({ routes }) => (
+  <Row>
+    <Col md={3}>
+      <ul className="nav nav-stacked nav-pills">
+        {routes.map(route => (
+          <NavBarLink key={route.title} to={route.path}>{route.title}</NavBarLink>
+        ))}
+      </ul>
+    </Col>
+    <Col md={9}>
+      {routes.map(route => (
+        <RouteWithSubRoutes key={route.title} {...route} />
+      ))}
+    </Col>
+  </Row>
+);
 
 
-export default class Components extends React.Component {
-  render() {
-    let {routes} = this.props;
+Components.propTypes = {
+  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
-    return (
-      <Row>
-          <Col md={3}>
-            <ul className="nav nav-stacked nav-pills">
-              {routes.map((route, index)=> {
-                return <NavBarLink key={index} to={route.path} >{route.title}</NavBarLink>
-              })}
-            </ul>
-          </Col>
-          <Col md={9}>
-            {routes.map((route, index)=> {
-              return <RouteWithSubRoutes key={index} {...route}/>
-            })}
-          </Col>
-      </Row>
-    )
-  }
-}
+export default Components;

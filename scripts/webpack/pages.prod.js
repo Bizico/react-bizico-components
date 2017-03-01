@@ -1,90 +1,18 @@
-var path = require('path');
-var webpack = require('webpack');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const demoDir = path.resolve(__dirname, '../../demo');
-const demoSrc = path.resolve(demoDir, 'src');
-const demoDist = path.resolve(demoDir, 'dist');
-const srcDir = path.resolve(__dirname, '../../src');
-/*
-let config = {
-  context: demoSrc,
-  entry: [
-    './index.js',
-  ],
-  output: {
-    path:  path.resolve(__dirname, '../../docs'),
-    filename: '[hash].[name].js',
-    publicPath: '/react-bizico-components'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: [
-          srcDir,
-          demoSrc
-        ],
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-      {
-        test: /\.(scss|css)$/,
-        include: [
-          srcDir,
-          demoDir,
-          /node_modules/
-        ],
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                sourceMap: true,
-                importLoaders: 1,
-                localIdentName: '[local]'
-              }
-            }, 'sass-loader'
-          ],
-          fallback: 'style-loader'
-        })
-      },
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader?limit=100000'
-      }
-    ]
-  },
-
-  plugins: [
-    new CleanWebpackPlugin(['docs'], {
-      root: path.resolve(__dirname, '../../'),
-      verbose: true,
-      dry: false,
-      exclude: ['404.html']
-    }),
-    new ExtractTextPlugin({allChunks: false, filename: 'styles.css'}),
-
-    new HtmlWebpackPlugin({inject: 'body', template: path.resolve(demoDir, 'src/index.html')}),
-  ],
-};
-
-
-module.exports = config;
-
-  */
 
 const baseConfig = require('./pages');
 const webpackMerge = require('webpack-merge');
 
 
-module.exports = function (env) {
+module.exports = function prod() {
   return webpackMerge(baseConfig(), {
     output: {
-      path:  path.resolve(__dirname, '../../docs'),
+      path: path.resolve(__dirname, '../../docs'),
       filename: '[hash].[name].js',
-      publicPath: '/react-bizico-components'
+      publicPath: '/react-bizico-components',
     },
     devtool: 'source-map',
     plugins: [
@@ -92,24 +20,26 @@ module.exports = function (env) {
         root: path.resolve(__dirname, '../../'),
         verbose: true,
         dry: false,
-        exclude: ['404.html']
+        exclude: ['404.html'],
       }),
       new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify('production')
-        }
+          NODE_ENV: JSON.stringify('production'),
+        },
       }),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
         mangle: {
           screw_ie8: true,
-          keep_fnames: true
+          keep_fnames: true,
         },
         compress: {
-          screw_ie8: true
+          screw_ie8: true,
         },
-        comments: false
-      })
-    ]
-  })
+        comments: false,
+        test: /\.(js|jsx)$/i,
+        include: ['src/**', 'demo/src/**'],
+      }),
+    ],
+  });
 };
