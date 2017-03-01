@@ -16969,24 +16969,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var RouteWithSubRoutes = function RouteWithSubRoutes(_ref) {
   var path = _ref.path,
       routes = _ref.routes,
-      component = _ref.component;
+      Component = _ref.Component;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], {
     path: path,
     render: function render(props) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('component', _extends({}, props, { routes: routes }));
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Component, _extends({}, props, { routes: routes }));
     }
   });
 };
 
 RouteWithSubRoutes.propTypes = {
   path: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string,
-  component: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func,
+  Component: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func,
   routes: __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].arrayOf(__WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].object)
 };
 
 RouteWithSubRoutes.defaultProps = {
   path: '',
-  component: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null),
+  Component: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null),
   routes: []
 };
 
@@ -17378,18 +17378,18 @@ var NotFound = function NotFound() {
 
 var routes = [{
   path: '/',
-  component: __WEBPACK_IMPORTED_MODULE_5__Home__["a" /* default */],
+  Component: __WEBPACK_IMPORTED_MODULE_5__Home__["a" /* default */],
   exact: true
 }, {
   path: '/components',
-  component: __WEBPACK_IMPORTED_MODULE_3__Components__["a" /* default */],
+  Component: __WEBPACK_IMPORTED_MODULE_3__Components__["a" /* default */],
   routes: [{
     path: '/components/data-table',
-    component: __WEBPACK_IMPORTED_MODULE_4__Components_DataTableDemo__["a" /* default */],
+    Component: __WEBPACK_IMPORTED_MODULE_4__Components_DataTableDemo__["a" /* default */],
     title: 'DataTable'
   }]
 }, {
-  component: NotFound
+  Component: NotFound
 }];
 
 var Demo = function Demo() {
@@ -58563,4 +58563,4 @@ module.exports = __webpack_require__(205);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=2d431aee76d576e558bd.main.js.map
+//# sourceMappingURL=837b791726f3a5e6c27f.main.js.map
