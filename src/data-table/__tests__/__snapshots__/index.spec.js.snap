@@ -2,7 +2,7 @@ exports[`DataTable should create component 1`] = `
 <div
   className="table-responsive">
   <table
-    className="table table-bordered">
+    className="b-data-table table table-bordered">
     <thead>
       <tr />
     </thead>

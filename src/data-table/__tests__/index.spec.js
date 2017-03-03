@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { DataTable } from '../';
+import DataTable from '../';
 
 describe('DataTable', () => {
   it('should create component', () => {
