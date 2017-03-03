@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - 6
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+before_install:
+  - npm install codecov.io
+
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+
+branches:
+  only:
+    - master
