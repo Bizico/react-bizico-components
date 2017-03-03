@@ -1,5 +1,5 @@
 /*
-  This is production only.
+ This is production only.
  */
 
 const path = require('path');
@@ -8,7 +8,7 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = function main() {
+module.exports = () => {
   const srcDir = path.resolve(__dirname, '../../src');
 
   const baseConfig = {

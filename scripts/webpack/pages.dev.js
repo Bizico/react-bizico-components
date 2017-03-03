@@ -7,8 +7,8 @@ const demoDist = path.resolve(__dirname, '../../demo/dist');
 const baseConfig = require('./pages');
 const webpackMerge = require('webpack-merge');
 
-module.exports = function dev() {
-  return webpackMerge({
+module.exports = () => (
+  webpackMerge({
     entry: [
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:8080',
@@ -32,5 +32,5 @@ module.exports = function dev() {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
     ],
-  }, baseConfig());
-};
+  }, baseConfig())
+);

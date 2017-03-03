@@ -7,8 +7,8 @@ const baseConfig = require('./pages');
 const webpackMerge = require('webpack-merge');
 
 
-module.exports = function prod() {
-  return webpackMerge(baseConfig(), {
+module.exports = () => (
+  webpackMerge(baseConfig(), {
     output: {
       path: path.resolve(__dirname, '../../docs'),
       filename: '[hash].[name].js',
@@ -41,5 +41,5 @@ module.exports = function prod() {
         include: ['src/**', 'demo/src/**'],
       }),
     ],
-  });
-};
+  })
+);
