@@ -18,8 +18,8 @@
     "build": "webpack --env=prod --progress --profile --colors",
     "pages": "webpack --env=pages.prod --progress --profile --colors && git add ./docs && gh-pages -d docs",
     "lint": "eslint src demo/src scripts --ext .js,.jsx",
-    "test": "set NODE_ENV=test&& jest -u --no-cache --coverage",
-    "test:watch": "set NODE_ENV=test&& jest -u --watch --no-cache"
+    "test": "jest -u --no-cache --coverage",
+    "test:watch": "jest -u --watch --no-cache"
   },
   "jest": {
     "moduleFileExtensions": [
