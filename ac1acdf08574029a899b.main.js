@@ -3872,7 +3872,7 @@ Button.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ControlLabel__ = __webpack_require__(477);
 /* unused harmony reexport ControlLabel */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Col__ = __webpack_require__(476);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_13__Col__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_13__Col__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Collapse__ = __webpack_require__(102);
 /* unused harmony reexport Collapse */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Dropdown__ = __webpack_require__(68);
@@ -3898,7 +3898,7 @@ Button.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__InputGroup__ = __webpack_require__(487);
 /* unused harmony reexport InputGroup */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__Jumbotron__ = __webpack_require__(490);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_26__Jumbotron__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_26__Jumbotron__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__Label__ = __webpack_require__(491);
 /* unused harmony reexport Label */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ListGroup__ = __webpack_require__(492);
@@ -3954,7 +3954,7 @@ Button.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ResponsiveEmbed__ = __webpack_require__(517);
 /* unused harmony reexport ResponsiveEmbed */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__Row__ = __webpack_require__(518);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_54__Row__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_54__Row__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__SafeAnchor__ = __webpack_require__(25);
 /* unused harmony reexport SafeAnchor */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__SplitButton__ = __webpack_require__(519);
@@ -17199,29 +17199,50 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var Components = function Components(_ref) {
   var routes = _ref.routes;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Row */],
+    'div',
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Col */],
-      { md: 3 },
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Jumbotron */],
+      null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'ul',
-        { className: 'nav nav-stacked nav-pills' },
-        routes.map(function (route) {
-          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2__components__["a" /* NavBarLink */],
-            { key: route.title, to: route.path },
-            route.title
-          );
-        })
+        'div',
+        { className: 'container' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h1',
+          null,
+          'Components'
+        )
       )
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Col */],
-      { md: 9 },
-      routes.map(function (route) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components__["b" /* RouteWithSubRoutes */], _extends({ key: route.title }, route));
-      })
+      'div',
+      { className: 'container' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Row */],
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* Col */],
+          { md: 3 },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'ul',
+            { className: 'nav nav-stacked nav-pills' },
+            routes.map(function (route) {
+              return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_2__components__["a" /* NavBarLink */],
+                { key: route.title, to: route.path },
+                route.title
+              );
+            })
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* Col */],
+          { md: 9 },
+          routes.map(function (route) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components__["b" /* RouteWithSubRoutes */], _extends({ key: route.title }, route));
+          })
+        )
+      )
     )
   );
 };
@@ -17264,62 +17285,70 @@ var Home = function Home() {
     'div',
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* Jumbotron */],
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Jumbotron */],
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h1',
-        null,
-        'Welcome!'
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'p',
-        null,
-        'This is a collection of components that we happened to build during our development endeavors on different projects.'
+        'div',
+        { className: 'container' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h1',
+          null,
+          'Welcome!'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          null,
+          'This is a collection of React components that we happened to build during our development endeavors.'
+        )
       )
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Row */],
-      null,
+      'div',
+      { className: 'container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Col */],
-        { md: 4 },
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Row */],
+        null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["c" /* Panel */],
-          { header: 'Data table', bsStyle: 'primary' },
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* Col */],
+          { md: 4 },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'p',
-            null,
-            'Customizable data table with expand, ordering, and nesting features.'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
-            { to: '/components/data-table' },
+            __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["c" /* Panel */],
+            { header: 'Data table', bsStyle: 'primary' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Button */],
-              { className: 'pull-right' },
-              'View Demo'
+              'p',
+              null,
+              'Customizable data table with expand, ordering, and nesting features.'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
+              { to: '/components/data-table' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Button */],
+                { className: 'pull-right' },
+                'View Demo'
+              )
             )
           )
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Col */],
-        { md: 4 },
+        ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["c" /* Panel */],
-          { header: 'Soon™', bsStyle: 'primary' },
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* Col */],
+          { md: 4 },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'p',
-            null,
-            'Soon\u2122.'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
-            { to: '/components/soon' },
+            __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["c" /* Panel */],
+            { header: 'Soon™', bsStyle: 'primary' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Button */],
-              { className: 'pull-right' },
-              'View Demo'
+              'p',
+              null,
+              'Soon\u2122.'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
+              { to: '/components/soon' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Button */],
+                { className: 'pull-right' },
+                'View Demo'
+              )
             )
           )
         )
@@ -17370,9 +17399,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var NotFound = function NotFound() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'h3',
-    null,
-    'Not found, or in progress ^_^'
+    'div',
+    { className: 'container' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'h3',
+      null,
+      'Not found, or in progress ^_^'
+    )
   );
 };
 
@@ -17431,20 +17464,25 @@ var Demo = function Demo() {
               __WEBPACK_IMPORTED_MODULE_6__components__["a" /* NavBarLink */],
               { to: '/components' },
               'Components'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'a',
+                { href: 'https://github.com/Bizico/react-bizico-components', target: '_blank', rel: 'noopener noreferrer' },
+                'GitHub'
+              )
             )
           )
         )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'container' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
-          null,
-          routes.map(function (route) {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components__["b" /* RouteWithSubRoutes */], _extends({ key: route.path || 'notFound' }, route));
-          })
-        )
+        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
+        null,
+        routes.map(function (route) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components__["b" /* RouteWithSubRoutes */], _extends({ key: route.path || 'notFound' }, route));
+        })
       )
     )
   );
@@ -58563,4 +58601,4 @@ module.exports = __webpack_require__(205);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=837b791726f3a5e6c27f.main.js.map
+//# sourceMappingURL=ac1acdf08574029a899b.main.js.map
