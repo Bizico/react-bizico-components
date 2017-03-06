@@ -1,11 +1,14 @@
 .navbar.demo-nav {
   background-color: #ff3232;
 
-  .navbar-header, .navbar-collapse  {
+  .navbar-header, .navbar-collapse {
     a {
       color: #ffffff
     }
   }
+
+  margin-bottom: 0;
+
 }
 
 .container {

@@ -9,7 +9,9 @@ import { RouteWithSubRoutes, NavBarLink } from '../components';
 
 
 const NotFound = () => (
-  <h3>Not found, or in progress ^_^</h3>
+  <div className="container">
+    <h3>Not found, or in progress ^_^</h3>
+  </div>
 );
 
 const routes = [
@@ -48,16 +50,19 @@ const Demo = () => (
           <ul className="nav navbar-nav">
             <NavBarLink to="/guide">Guide</NavBarLink>
             <NavBarLink to="/components">Components</NavBarLink>
+            <li>
+              <a href="https://github.com/Bizico/react-bizico-components" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </li>
           </ul>
         </Navbar.Collapse>
       </Navbar>
-      <div className="container">
-        <Switch>
-          {routes.map(route => (
-            <RouteWithSubRoutes key={route.path || 'notFound'} {...route} />
-          ))}
-        </Switch>
-      </div>
+      <Switch>
+        {routes.map(route => (
+          <RouteWithSubRoutes key={route.path || 'notFound'} {...route} />
+        ))}
+      </Switch>
     </div>
   </Router>
 );
