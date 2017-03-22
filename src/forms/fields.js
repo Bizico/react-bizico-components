@@ -120,7 +120,7 @@ class Field extends React.Component {
       onChange: this.onChange,
       value: value,
     });
-  }
+  };
 }
 Field.propTypes = {
   name: React.PropTypes.string.isRequired,
